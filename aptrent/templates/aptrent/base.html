@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Start Page</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <h2>Logged, Hi {{ user.first_name }}</h2>
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Cerrar sesión</button>
+        </form>
+
+    {% else %}
+        <h2>Select Your Option</h2>
+
+        <a href="{% url 'login' %}">Iniciar sesión</a>
+        <a href="{% url 'registro' %}">Crear Cuenta</a>
+
+    {% endif %}
+    
+</body>
+</html>
