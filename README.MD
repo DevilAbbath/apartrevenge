@@ -74,17 +74,13 @@ El uso de Django junto con scripts de Python facilitó la automatización de tar
 
 ### Print de lo esperado
 
-![img1](print/Hito2.5/img1.png)
+![img1](print/Hito3/img1.png)
 
-![img2](print/Hito2.5/img2.png)
+![img2](print/Hito3/img2.png)
 
-![img3](print/Hito2.5/img3.png)
+![img3](print/Hito3/img3.png)
 
-![img4](print/Hito2.5/img4.png)
-
-![img5](print/Hito2.5/img5.png)
-
-![img6](print/Hito2.5/img6.png)
+![img4](print/Hito3/img4.png)
 
 
 
