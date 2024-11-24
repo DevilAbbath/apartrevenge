@@ -3,8 +3,7 @@
 
 ## Descripción
 
-Este proyecto corresponde al Hito 2 del desafío de la plataforma de arrendamiento inmobiliario. El objetivo es crear un sistema de autenticación de usuarios, el cual permita a los usuarios registrarse, iniciar sesión
-y cerrar sesión en el sitio web, así como gestionar permisos y grupos de usuarios.
+Este proyecto corresponde al Hito 3 del desafío de la plataforma de arrendamiento inmobiliario. Se han realizado diversas tareas para poblar la base de datos, consultar y generar reportes de inmuebles para arriendo, todo utilizando Django, migraciones y consultas SQL a través de scripts de Python.
 
 ## Requerimientos
 
@@ -53,60 +52,23 @@ y cerrar sesión en el sitio web, así como gestionar permisos y grupos de usuar
     Visita http://127.0.0.1:8000/ para acceder e interectuar con los distintos operadores.
 
 
-# Resumen de Cambios Implementados
+# Resumen de Implementaciones Realizadas
 
-## 1. Configuración de la Autenticación (3 puntos)
-- **Configuración de aplicaciones necesarias**:
-  - Aseguramos que `django.contrib.auth` y `django.contrib.contenttypes` están en `INSTALLED_APPS`.
-- **URLs para autenticación**:
-  - Configuramos las rutas necesarias para registro, inicio y cierre de sesión en el archivo `urls.py`.
-- **Creación de superusuario**:
-  - Generamos un superusuario para acceder al panel de administración utilizando el comando `python manage.py createsuperuser`.
+## 1. Población de la base de datos utilizando migraciones:
+- **Regiones y Comunas de Chile**: Se utilizó `loaddata` para poblar la base de datos con las regiones y comunas de Chile. Se prepararon archivos JSON con los datos de las 16 regiones y sus correspondientes 4 comunas por cada una. Este proceso garantizó la correcta relación entre las entidades de `Region` y `Comuna`.
+- **Tipos de Inmuebles**: Se poblaron los tipos de inmuebles disponibles en la base de datos, como `Casa`, `Departamento` y `Oficina`, utilizando `loaddata` para garantizar que los datos estuvieran correctamente cargados en el modelo `Inmueble`.
+- **Inmuebles y Usuarios**: A través de `loaddata`, se cargaron varios inmuebles y usuarios en la base de datos, diferenciando entre `arrendatarios` y `arrendadores` a través de un modelo `UserProfile` que tiene una relación directa con el modelo `User` de Django.
 
----
-
-## 2. Creación de la Vista y Formulario de Registro (3 puntos)
-- **Vista de registro**:
-  - Implementamos la vista `registro` utilizando un formulario personalizado basado en `UserCreationForm`.
-- **Template HTML**:
-  - Creamos el archivo `registro.html` con el formulario de registro estilizado con Bootstrap.
-- **Registro de usuarios**:
-  - Permite a los usuarios registrarse correctamente, integrando campos adicionales (`rut`, `telefono`, `direccion`, `user_type`) provenientes del modelo `UserProfile`.
-
----
-
-## 3. Creación de las Vistas de Inicio y Cierre de Sesión (3 puntos)
-- **Inicio de sesión**:
-  - Implementamos la vista `LoginView` y configuramos el template `login.html` para mostrar el formulario de inicio de sesión.
-- **Cierre de sesión**:
-  - Configuramos la vista `LogoutView` y creamos el template `logged_out.html` para confirmar el cierre de sesión.
-- **Validación**:
-  - Verificamos que los usuarios puedan iniciar y cerrar sesión correctamente.
-
----
-
-## 4. Gestión de Permisos y Grupos de Usuarios (1 punto)
-- **Permisos personalizados**:
-  - Asignamos permisos específicos a los usuarios mediante el campo `user_type` del modelo `UserProfile`.
-  - Configuramos vistas protegidas con `@permission_required` y `@login_required` para restringir acceso según el tipo de usuario.
-- **Grupos omitidos**:
-  - En lugar de usar grupos, utilizamos lógica personalizada para validar los permisos basados en el tipo de usuario (`arrendatario` o `arrendador`).
-
----
-
-## Otros Cambios Relevantes
-- **Integración de lógica post-login**:
-  - Los usuarios son redirigidos automáticamente según su tipo (`arrendatario` o `arrendador`) tras iniciar sesión.
-- **Validaciones adicionales**:
-  - Normalizamos y validamos el campo `rut` para evitar duplicados y errores de formato.
-- **Ajustes en el modelo `UserProfile`**:
-  - Modificamos el tamaño del campo `rut` en el modelo para soportar formatos con guiones.
-
----
+## 2. Consultas de inmuebles para arriendo utilizando scripts Python:
+- **Por Comuna**: Se desarrolló un script Python que, utilizando Django y SQL, consulta los inmuebles disponibles en cada comuna. Los resultados se guardaron en un archivo de texto con el nombre y la descripción de cada inmueble, separados por comuna.
+- **Por Región**: De manera similar, se creó otro script para consultar los inmuebles por región. Los resultados se almacenaron en un archivo de texto con la misma estructura, pero esta vez los inmuebles fueron agrupados por la región a la que pertenecen.
 
 ## Conclusión
 
-El sistema de autenticación y gestión de usuarios se implementó de forma exitosa, cumpliendo con todos los requerimientos del desafío. Se logró integrar un flujo de registro, inicio y cierre de sesión funcional, incluyendo la personalización del formulario de registro con campos adicionales del modelo `UserProfile`. Además, se configuraron permisos basados en el tipo de usuario (`arrendatario` o `arrendador`) para garantizar el acceso restringido a las vistas correspondientes. Con estas mejoras, el sistema proporciona una experiencia segura y adaptada a las necesidades específicas de los usuarios.
+El proyecto fue exitosamente completado siguiendo los requerimientos establecidos. La utilización de migraciones y `loaddata` permitió poblar de manera eficiente la base de datos con las regiones, comunas, tipos de inmuebles y usuarios. Además, los scripts Python para consultar los inmuebles por comuna y por región han proporcionado una manera flexible y automatizada de generar reportes a partir de la base de datos. Estos procesos no solo optimizaron el manejo de la información en el sistema, sino que también demostraron la capacidad de integrarse con Django y SQL para realizar consultas avanzadas de manera sencilla.
+
+El uso de Django junto con scripts de Python facilitó la automatización de tareas repetitivas, mejorando la eficiencia y reduciendo posibles errores manuales. Este enfoque refuerza las buenas prácticas de desarrollo en proyectos con bases de datos grandes y complejas.
+
 
 
 

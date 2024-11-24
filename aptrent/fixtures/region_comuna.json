@@ -1,0 +1,443 @@
+[
+    {
+      "model": "aptrent.region",
+      "pk": 1,
+      "fields": {
+        "nombre": "Arica y Parinacota",
+        "numero_romano": "XV"
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 1,
+      "fields": {
+        "nombre": "Arica",
+        "region": 1
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 2,
+      "fields": {
+        "nombre": "Camarones",
+        "region": 1
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 3,
+      "fields": {
+        "nombre": "General Lagos",
+        "region": 1
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 4,
+      "fields": {
+        "nombre": "Putre",
+        "region": 1
+      }
+    },
+    {
+      "model": "aptrent.region",
+      "pk": 2,
+      "fields": {
+        "nombre": "Tarapacá",
+        "numero_romano": "I"
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 5,
+      "fields": {
+        "nombre": "Alto Hospicio",
+        "region": 2
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 6,
+      "fields": {
+        "nombre": "Camiña",
+        "region": 2
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 7,
+      "fields": {
+        "nombre": "Colchane",
+        "region": 2
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 8,
+      "fields": {
+        "nombre": "Huara",
+        "region": 2
+      }
+    },
+    {
+      "model": "aptrent.region",
+      "pk": 3,
+      "fields": {
+        "nombre": "Antofagasta",
+        "numero_romano": "II"
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 9,
+      "fields": {
+        "nombre": "Antofagasta",
+        "region": 3
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 10,
+      "fields": {
+        "nombre": "Calama",
+        "region": 3
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 11,
+      "fields": {
+        "nombre": "María Elena",
+        "region": 3
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 12,
+      "fields": {
+        "nombre": "Mejillones",
+        "region": 3
+      }
+    },
+    {
+      "model": "aptrent.region",
+      "pk": 4,
+      "fields": {
+        "nombre": "Atacama",
+        "numero_romano": "III"
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 13,
+      "fields": {
+        "nombre": "Alto del Carmen",
+        "region": 4
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 14,
+      "fields": {
+        "nombre": "Caldera",
+        "region": 4
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 15,
+      "fields": {
+        "nombre": "Chañaral",
+        "region": 4
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 16,
+      "fields": {
+        "nombre": "Copiapó",
+        "region": 4
+      }
+    },
+    {
+      "model": "aptrent.region",
+      "pk": 5,
+      "fields": {
+        "nombre": "Coquimbo",
+        "numero_romano": "IV"
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 17,
+      "fields": {
+        "nombre": "Andacollo",
+        "region": 5
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 18,
+      "fields": {
+        "nombre": "Coquimbo",
+        "region": 5
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 19,
+      "fields": {
+        "nombre": "La Serena",
+        "region": 5
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 20,
+      "fields": {
+        "nombre": "Ovalle",
+        "region": 5
+      }
+    },
+    {
+      "model": "aptrent.region",
+      "pk": 6,
+      "fields": {
+        "nombre": "Valparaíso",
+        "numero_romano": "V"
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 21,
+      "fields": {
+        "nombre": "Valparaíso",
+        "region": 6
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 22,
+      "fields": {
+        "nombre": "Viña del Mar",
+        "region": 6
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 23,
+      "fields": {
+        "nombre": "Concón",
+        "region": 6
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 24,
+      "fields": {
+        "nombre": "Quintero",
+        "region": 6
+      }
+    },
+    {
+      "model": "aptrent.region",
+      "pk": 7,
+      "fields": {
+        "nombre": "O'Higgins",
+        "numero_romano": "VI"
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 25,
+      "fields": {
+        "nombre": "Rancagua",
+        "region": 7
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 26,
+      "fields": {
+        "nombre": "Machalí",
+        "region": 7
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 27,
+      "fields": {
+        "nombre": "San Fernando",
+        "region": 7
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 28,
+      "fields": {
+        "nombre": "Pichilemu",
+        "region": 7
+      }
+    },
+    {
+      "model": "aptrent.region",
+      "pk": 8,
+      "fields": {
+        "nombre": "Maule",
+        "numero_romano": "VII"
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 29,
+      "fields": {
+        "nombre": "Talca",
+        "region": 8
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 30,
+      "fields": {
+        "nombre": "Curicó",
+        "region": 8
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 31,
+      "fields": {
+        "nombre": "Linares",
+        "region": 8
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 32,
+      "fields": {
+        "nombre": "San Javier",
+        "region": 8
+      }
+    },
+    {
+      "model": "aptrent.region",
+      "pk": 9,
+      "fields": {
+        "nombre": "Ñuble",
+        "numero_romano": "XVI"
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 33,
+      "fields": {
+        "nombre": "Chillán",
+        "region": 9
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 34,
+      "fields": {
+        "nombre": "San Carlos",
+        "region": 9
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 35,
+      "fields": {
+        "nombre": "Coihueco",
+        "region": 9
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 36,
+      "fields": {
+        "nombre": "Ñiquén",
+        "region": 9
+      }
+    },
+    {
+      "model": "aptrent.region",
+      "pk": 10,
+      "fields": {
+        "nombre": "Biobío",
+        "numero_romano": "VIII"
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 37,
+      "fields": {
+        "nombre": "Concepción",
+        "region": 10
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 38,
+      "fields": {
+        "nombre": "Los Ángeles",
+        "region": 10
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 39,
+      "fields": {
+        "nombre": "Chiguayante",
+        "region": 10
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 40,
+      "fields": {
+        "nombre": "Hualpén",
+        "region": 10
+      }
+    },
+    {
+      "model": "aptrent.region",
+      "pk": 11,
+      "fields": {
+        "nombre": "La Araucanía",
+        "numero_romano": "IX"
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 41,
+      "fields": {
+        "nombre": "Temuco",
+        "region": 11
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 42,
+      "fields": {
+        "nombre": "Villarrica",
+        "region": 11
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 43,
+      "fields": {
+        "nombre": "Pucón",
+        "region": 11
+      }
+    },
+    {
+      "model": "aptrent.comuna",
+      "pk": 44,
+      "fields": {
+        "nombre": "Temuco",
+        "region": 11
+      }
+    }
+  ]
+  

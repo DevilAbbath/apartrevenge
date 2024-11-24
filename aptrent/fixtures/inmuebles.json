@@ -1,0 +1,75 @@
+[
+    {
+      "model": "aptrent.inmueble",
+      "pk": 1,
+      "fields": {
+        "nombre": "Casa en la Playa",
+        "descripcion": "Hermosa casa frente al mar, ideal para descansar.",
+        "m2_construidos": 150.0,
+        "m2_totales": 300.0,
+        "estacionamientos": 2,
+        "habitaciones": 3,
+        "banos": 2,
+        "direccion": "Avenida del Mar 1234, Viña del Mar",
+        "comuna": 21,
+        "region": 6,
+        "tipo_inmueble": "casa",
+        "precio_mensual": 150000.00
+      }
+    },
+    {
+      "model": "aptrent.inmueble",
+      "pk": 2,
+      "fields": {
+        "nombre": "Oficina Multiuso",
+        "descripcion": "Ubicacion centrica con multiples accesos.",
+        "m2_construidos": 650.0,
+        "m2_totales": 750.0,
+        "estacionamientos": 5,
+        "habitaciones": 10,
+        "banos": 6,
+        "direccion": "San Martin 45, Caldera",
+        "comuna": 16,
+        "region": 4,
+        "tipo_inmueble": "oficina",
+        "precio_mensual": 1000000.00
+      }
+    },
+    {
+        "model": "aptrent.inmueble",
+        "pk": 3,
+        "fields": {
+          "nombre": "Departamento en Antofagasta",
+          "descripcion": "Moderno departamento con vista al mar y excelente ubicación.",
+          "m2_construidos": 80.0,
+          "m2_totales": 100.0,
+          "estacionamientos": 1,
+          "habitaciones": 2,
+          "banos": 1,
+          "direccion": "Avenida Balmaceda 567, Antofagasta",
+          "comuna": 1,  
+          "region": 1,  
+          "tipo_inmueble": "departamento",
+          "precio_mensual": 450000.00
+        }
+      },
+      {
+        "model": "aptrent.inmueble",
+        "pk": 4,
+        "fields": {
+          "nombre": "Casa en Calama",
+          "descripcion": "Casa familiar con jardín y estacionamiento en la ciudad de Calama.",
+          "m2_construidos": 120.0,
+          "m2_totales": 200.0,
+          "estacionamientos": 2,
+          "habitaciones": 3,
+          "banos": 2,
+          "direccion": "Calle San Martín 123, Calama",
+          "comuna": 2,  
+          "region": 1,  
+          "tipo_inmueble": "casa",
+          "precio_mensual": 350000.00
+        }
+      }
+  ]
+  

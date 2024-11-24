@@ -1,0 +1,111 @@
+[
+    {
+      "model": "auth.user",
+      "pk": 2,
+      "fields": {
+        "username": "arrendatario1",
+        "password": "0p9o8i7u.",  
+        "first_name": "Juan",
+        "last_name": "Pérez",
+        "email": "juan.perez@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "is_superuser": false,
+        "last_login": "2024-11-24T00:00:00Z",
+        "date_joined": "2024-11-24T00:00:00Z"
+      }
+    },
+    {
+      "model": "aptrent.userprofile",
+      "pk": 2,
+      "fields": {
+        "user": 2,
+        "rut": "12345678-9",
+        "telefono": "912345678",
+        "user_type": "arrendatario",
+        "direccion": "Calle Falsa 123, Santiago"
+      }
+    },
+    {
+      "model": "auth.user",
+      "pk": 3,
+      "fields": {
+        "username": "arrendatario2",
+        "password": "0p9o8i7u.",  
+        "first_name": "Ana",
+        "last_name": "López",
+        "email": "ana.lopez@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "is_superuser": false,
+        "last_login": "2024-11-24T00:00:00Z",
+        "date_joined": "2024-11-24T00:00:00Z"
+      }
+    },
+    {
+      "model": "aptrent.userprofile",
+      "pk": 3,
+      "fields": {
+        "user": 3,
+        "rut": "98765432-1",
+        "telefono": "987654321",
+        "user_type": "arrendatario",
+        "direccion": "Avenida Central 456, Valparaíso"
+      }
+    },
+    {
+      "model": "auth.user",
+      "pk": 4,
+      "fields": {
+        "username": "arrendador1",
+        "password": "0p9o8i7u.",  
+        "first_name": "Carlos",
+        "last_name": "González",
+        "email": "carlos.gonzalez@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "is_superuser": false,
+        "last_login": "2024-11-24T00:00:00Z",
+        "date_joined": "2024-11-24T00:00:00Z"
+      }
+    },
+    {
+      "model": "aptrent.userprofile",
+      "pk": 4,
+      "fields": {
+        "user": 4,
+        "rut": "12378945-6",
+        "telefono": "923456789",
+        "user_type": "arrendador",
+        "direccion": "Calle Real 789, Concepción"
+      }
+    },
+    {
+      "model": "auth.user",
+      "pk": 5,
+      "fields": {
+        "username": "arrendador2",
+        "password": "0p9o8i7u.",  
+        "first_name": "Laura",
+        "last_name": "Martínez",
+        "email": "laura.martinez@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "is_superuser": false,
+        "last_login": "2024-11-24T00:00:00Z",
+        "date_joined": "2024-11-24T00:00:00Z"
+      }
+    },
+    {
+      "model": "aptrent.userprofile",
+      "pk": 5,
+      "fields": {
+        "user": 5,
+        "rut": "23456789-0",
+        "telefono": "934567890",
+        "user_type": "arrendador",
+        "direccion": "Avenida Libertador 1000, Temuco"
+      }
+    }
+  ]
+  
