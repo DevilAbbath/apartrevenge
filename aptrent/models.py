@@ -16,7 +16,7 @@ class UserProfile(models.Model):
     telefono = models.CharField(max_length=9, blank=True)  # Teléfono (opcional)
     user_type = models.CharField(max_length=20, choices=USER_TYPE_CHOICES)  # Tipo de usuario
     direccion = models.CharField(max_length=200, blank=True)  # Dirección (opcional)
-
+  
     def __str__(self):
         return self.user.username  # Devuelve el nombre de usuario como representación
     

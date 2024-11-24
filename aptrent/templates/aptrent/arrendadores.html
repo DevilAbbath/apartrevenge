@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arrendadores</title>
+</head>
+<body>
+    <h1>Arrendadores</h1>
+    
+    <h2>Logged, Hi {{ user.first_name }}</h2>
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Cerrar sesión</button>
+    </form>    
+</body>
+</html>
