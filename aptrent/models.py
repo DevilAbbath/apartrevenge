@@ -58,6 +58,8 @@ class Inmueble(models.Model):
     region = models.ForeignKey('Region', on_delete=models.CASCADE, blank=True, null=True)  # Relación con Region
     tipo_inmueble = models.CharField(max_length=50, choices=TIPO_INMUEBLE_CHOICES)
     precio_mensual = models.DecimalField(max_digits=10, decimal_places=2)
+    propietario = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+
     
     def __str__(self):
         return self.nombre

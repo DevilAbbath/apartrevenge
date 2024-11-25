@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import UserProfile  # Asegúrate de importar tu modelo UserProfile
+from .models import UserProfile, Inmueble
 
 class CustomUserCreationForm(UserCreationForm):
     # Campos adicionales de UserProfile
@@ -31,3 +31,13 @@ class CustomUserCreationForm(UserCreationForm):
         )
 
         return user
+
+class InmuebleForm(forms.ModelForm):
+    class Meta:
+        model = Inmueble
+        fields = ['nombre', 'descripcion', 'm2_construidos', 'm2_totales', 'estacionamientos',
+                  'habitaciones', 'banos', 'direccion', 'comuna', 'region', 'tipo_inmueble', 'precio_mensual']
+        widgets = {
+            'descripcion': forms.Textarea(attrs={'rows': 4}),
+            'tipo_inmueble': forms.Select(choices=Inmueble.TIPO_INMUEBLE_CHOICES),
+        }

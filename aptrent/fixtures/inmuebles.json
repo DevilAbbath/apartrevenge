@@ -14,7 +14,8 @@
         "comuna": 21,
         "region": 6,
         "tipo_inmueble": "casa",
-        "precio_mensual": 150000.00
+        "precio_mensual": 150000.00,
+        "propietario": 1
       }
     },
     {
@@ -32,7 +33,8 @@
         "comuna": 16,
         "region": 4,
         "tipo_inmueble": "oficina",
-        "precio_mensual": 1000000.00
+        "precio_mensual": 1000000.00,
+        "propietario": 1
       }
     },
     {
@@ -50,7 +52,8 @@
           "comuna": 1,  
           "region": 1,  
           "tipo_inmueble": "departamento",
-          "precio_mensual": 450000.00
+          "precio_mensual": 450000.00,
+          "propietario": 1
         }
       },
       {
@@ -68,7 +71,8 @@
           "comuna": 2,  
           "region": 1,  
           "tipo_inmueble": "casa",
-          "precio_mensual": 350000.00
+          "precio_mensual": 350000.00,
+          "propietario": 1
         }
       }
   ]

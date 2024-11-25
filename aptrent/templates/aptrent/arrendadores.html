@@ -5,4 +5,8 @@
     <h1>Portal Arrendadores</h1>
     
     <h2>Logged, Buenas Tardes {{ user.first_name }}</h2>
+
+    <a href="{% url 'agregar_inmueble' %}">Añadir Inmueble</a>
+
+    {% include 'aptrent/inmuebles/lista_inmuebles.html' %}    
 {% endblock %}
