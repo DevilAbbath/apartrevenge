@@ -54,35 +54,25 @@ Este proyecto corresponde al Hito 3 del desafío de la plataforma de arrendamien
 
 # Resumen de Implementaciones Realizadas
 
-## 1. Población de la base de datos utilizando migraciones:
-- **Regiones y Comunas de Chile**: Se utilizó `loaddata` para poblar la base de datos con las regiones y comunas de Chile. Se prepararon archivos JSON con los datos de las 16 regiones y sus correspondientes 4 comunas por cada una. Este proceso garantizó la correcta relación entre las entidades de `Region` y `Comuna`.
-- **Tipos de Inmuebles**: Se poblaron los tipos de inmuebles disponibles en la base de datos, como `Casa`, `Departamento` y `Oficina`, utilizando `loaddata` para garantizar que los datos estuvieran correctamente cargados en el modelo `Inmueble`.
-- **Inmuebles y Usuarios**: A través de `loaddata`, se cargaron varios inmuebles y usuarios en la base de datos, diferenciando entre `arrendatarios` y `arrendadores` a través de un modelo `UserProfile` que tiene una relación directa con el modelo `User` de Django.
+## 1. Modificacion de datos de perfil del Usuario:
+Ahora cada usuario registrado podra modificar los datos personales asociado a su cuenta de usuario.
 
-## 2. Consultas de inmuebles para arriendo utilizando scripts Python:
-- **Por Comuna**: Se desarrolló un script Python que, utilizando Django y SQL, consulta los inmuebles disponibles en cada comuna. Los resultados se guardaron en un archivo de texto con el nombre y la descripción de cada inmueble, separados por comuna.
-- **Por Región**: De manera similar, se creó otro script para consultar los inmuebles por región. Los resultados se almacenaron en un archivo de texto con la misma estructura, pero esta vez los inmuebles fueron agrupados por la región a la que pertenecen.
+## 2. Modificacion vistas:
+Se aplica vistas de forma modular para asi centrañlizar el uso del navbar y footer en cada pagina que visite el usuario ya sease registrado o no.
 
-## Conclusión
-
-El proyecto fue exitosamente completado siguiendo los requerimientos establecidos. La utilización de migraciones y `loaddata` permitió poblar de manera eficiente la base de datos con las regiones, comunas, tipos de inmuebles y usuarios. Además, los scripts Python para consultar los inmuebles por comuna y por región han proporcionado una manera flexible y automatizada de generar reportes a partir de la base de datos. Estos procesos no solo optimizaron el manejo de la información en el sistema, sino que también demostraron la capacidad de integrarse con Django y SQL para realizar consultas avanzadas de manera sencilla.
-
-El uso de Django junto con scripts de Python facilitó la automatización de tareas repetitivas, mejorando la eficiencia y reduciendo posibles errores manuales. Este enfoque refuerza las buenas prácticas de desarrollo en proyectos con bases de datos grandes y complejas.
+## 3. Clausulas y redireccionamiento
+Se añaden condicionales segun el tipo de usuario y en caso de no existir un usuario e intente ingresar a enlaces no permitidos sera redirigido al homepage del aplicativo.
 
 
+### Print de los resultados
 
+![img1](print/Hito4/img1.png)
 
-### Print de lo esperado
+![img2](print/Hito4/img2.png)
 
-![img1](print/Hito3/img1.png)
+![img3](print/Hito4/img3.png)
 
-![img2](print/Hito3/img2.png)
-
-![img3](print/Hito3/img3.png)
-
-![img4](print/Hito3/img4.png)
-
-
+![img4](print/Hito4/img4.png)
 
 
 Autor

@@ -1,0 +1,28 @@
+{% extends 'aptrent/layout/base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+    <h2>Tus Datos</h2>
+    <form method="post" action="{% url 'perfil' %}">
+        {% csrf_token %}
+        <label for="username">Nombre de Usuario:</label>
+        <input type="text" id="username" name="username" value="{{ user.username }}" readonly>
+        <br>
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" value="{{ user.email }}">
+        <br>
+        <label for="rut">RUT:</label>
+        <input type="text" id="rut" name="rut" value="{{ user.userprofile.rut }}" readonly>
+        <br>
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" value="{{ user.userprofile.telefono }}">
+        <br>
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" value="{{ user.userprofile.direccion }}">
+        <br>
+        <br>
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</section>
+{% endblock %}

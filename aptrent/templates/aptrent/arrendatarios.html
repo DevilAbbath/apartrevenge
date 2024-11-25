@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Arrendatarios</title>
-</head>
-<body>
-    <h1>Arrendatarios</h1>
+{% extends 'aptrent/layout/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>Portal Arrendatarios</h1>
     
-    <h2>Logged, Hi {{ user.first_name }}</h2>
-    <form method="POST" action="{% url 'logout' %}">
-        {% csrf_token %}
-        <button type="submit">Cerrar sesión</button>
-    </form>    
-</body>
-</html>
+    <h2>Logged, Buenas Tardes {{ user.first_name }}</h2>
+{% endblock %}

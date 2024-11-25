@@ -1,0 +1,58 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bienvenido a AptRent</title>
+
+</head>
+
+<body>
+    <nav>
+        <div>
+            <a href="{% url 'index' %}" >
+                <p>Logo</p>
+            </a>
+
+            <a href="{% url 'index' %}">Inicio</a>
+            
+            <a href="*">Sobre Nosotros</a>
+
+            <a href="*">Contactanos</a>
+                        
+
+            {% if user.userprofile.user_type == 'arrendador' %}
+                <a href="{% url 'arrendadores' %}">Mi Portal</a>
+            {% elif user.userprofile.user_type == 'arrendatario' %}
+                <a href="{% url 'arrendatarios' %}">Mi Portal</a>
+            {% else %}
+            {% endif %}
+            {% if user.is_authenticated %}
+                <a href="{% url 'perfil' %}">Mi Perfil</a>
+                <form method="POST" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Cerrar sesión</button>
+                </form>
+
+            {% else %}
+                <a href="{% url 'login' %}">Iniciar sesión</a>
+
+                <a href="{% url 'registro' %}">Crear Cuenta</a>
+            {% endif %}
+        </div>
+    </nav>
+
+        {% block content %}
+        {% endblock %}
+        
+    <!-- Footer-->
+    <footer >
+        <h4 >Erick Jaime Jara &copy; AptRent 2024</h4>
+    </footer>
+
+</body>
+
+</html>

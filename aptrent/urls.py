@@ -1,9 +1,10 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
-from .views import registro, index, custom_login, custom_logout, arrendadores_view, arrendatarios_view # La vista que crearemos para el registro
+from .views import registro, index, custom_login, custom_logout, arrendadores_view, arrendatarios_view, editar_perfil
 from .decorators import check_user_type
 
 urlpatterns = [
+    
     # URLS para gestion de usuairio
     path('registro/', registro, name='registro'),
     path('login/', custom_login, name='login'),
@@ -15,5 +16,6 @@ urlpatterns = [
 
     
     # HomePage
-    path('', index, name='base'),
+    path('', index, name='index'),
+    path('perfil/', editar_perfil, name='perfil'),
 ]
