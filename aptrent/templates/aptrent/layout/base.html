@@ -19,8 +19,10 @@
 
             <a href="{% url 'index' %}">Inicio</a>
 
-            <a href="{% url 'lista_inmuebles' %}">Inmuebles</a>
-            
+            {% if not user.is_authenticated %}
+                <a href="{% url 'lista_inmuebles' %}">Inmuebles</a>
+            {% endif %}
+
             <a href="*">Sobre Nosotros</a>
 
             <a href="*">Contactanos</a>

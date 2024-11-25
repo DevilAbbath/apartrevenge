@@ -1,4 +1,6 @@
+{% extends 'aptrent/layout/base.html' %}
 {% load static %}
+
 {% block content %}
     <h2>Lista de inmuebles disponibles</h2>
     <table>
@@ -21,13 +23,6 @@
             <td>{{ inmueble.get_tipo_inmueble_display }}</td>
             <td>{{ inmueble.comuna }}</td>
             <td>{{ inmueble.region }}</td>
-            {% if user.is_authenticated %}
-            <td>
-                <!-- Agregar acciones solo para usuarios autenticados -->
-                <a href="{% url 'editar_inmueble' inmueble.id %}">Editar</a> | 
-                <a href="{% url 'eliminar_inmueble' inmueble.id %}">Eliminar</a>
-            </td>
-            {% endif %}
         </tr>
         {% empty %}
         <tr>

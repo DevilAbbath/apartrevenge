@@ -123,17 +123,22 @@ def editar_inmueble(request, id):
 
     return render(request, 'aptrent/inmuebles/editar_inmueble.html', {'form': form})
 
-@login_required
 def lista_inmuebles(request):
     user = request.user
-    user_profile = UserProfile.objects.get(user=user)
-    if user_profile.user_type == 'arrendador':
-        print(f"El user_type es {user_profile.user_type}")
-        inmuebles = Inmueble.objects.filter(propietario=request.user,comuna__isnull=False, region__isnull=False)
-    else :
-        print(f"El user_type es {user_profile.user_type}")
-        inmuebles = Inmueble.objects.filter(comuna__isnull=False, region__isnull=False)  # Filtrado por lógica si aplica
-    return render(request, 'aptrent/inmuebles/lista_inmuebles.html', {'inmuebles': inmuebles})
+
+    if user.is_authenticated:
+        user_profile = UserProfile.objects.get(user=user)
+        if user_profile.user_type == 'arrendador':
+            inmuebles = Inmueble.objects.filter(propietario=user, comuna__isnull=False, region__isnull=False)
+        else:
+            inmuebles = Inmueble.objects.filter(comuna__isnull=False, region__isnull=False)
+    else:
+        # Para usuarios no autenticados, muestra todos los inmuebles disponibles
+        print("Usuario no autenticado.")
+        inmuebles = Inmueble.objects.filter(comuna__isnull=False, region__isnull=False)
+
+    return render(request, 'aptrent/inmuebles/lista_inmuebles_publica.html', {'inmuebles': inmuebles})
+
 
 @login_required
 def eliminar_inmueble(request, id):

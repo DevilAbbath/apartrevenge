@@ -10,4 +10,6 @@
         <p>Registrate para obtener la experiencia completa al sitio. <a href="{% url 'registro' %}">Crear Cuenta</a></p>
         <p>Ya tienes Cuenta? . <a href="{% url 'login' %}">Iniciar sesión</a></p>
     {% endif %}
+
+    {% include 'aptrent/inmuebles/lista_inmuebles.html' %}   
 {% endblock %}

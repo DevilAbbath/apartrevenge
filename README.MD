@@ -52,16 +52,48 @@ Este proyecto corresponde al Hito 3 del desafío de la plataforma de arrendamien
     Visita http://127.0.0.1:8000/ para acceder e interectuar con los distintos operadores.
 
 
-# Resumen de Implementaciones Realizadas
+# Resumen del Trabajo Realizado
 
-## 1. Modificacion de datos de perfil del Usuario:
-Ahora cada usuario registrado podra modificar los datos personales asociado a su cuenta de usuario.
+## **1. Página web para agregar nuevos inmuebles (Arrendadores)**
+- **a. Rutas para agregar inmuebles:**  
+  Se configuraron las rutas en `urls.py` para acceder a la vista `agregar_inmueble`, específica para que los arrendadores puedan añadir nuevas propiedades.
+- **b. Formulario basado en el modelo:**  
+  Se creó un formulario en `forms.py` utilizando el modelo `Inmueble`, limitando los campos al usuario autenticado (propietario).
+- **c. Función para guardar el objeto:**  
+  Se implementó la función `agregar_inmueble` en `views.py`, verificando que solo arrendadores puedan crear inmuebles. El formulario valida los datos y guarda el objeto en la base de datos.
 
-## 2. Modificacion vistas:
-Se aplica vistas de forma modular para asi centrañlizar el uso del navbar y footer en cada pagina que visite el usuario ya sease registrado o no.
+---
 
-## 3. Clausulas y redireccionamiento
-Se añaden condicionales segun el tipo de usuario y en caso de no existir un usuario e intente ingresar a enlaces no permitidos sera redirigido al homepage del aplicativo.
+## **2. Página web para actualizar y eliminar inmuebles existentes (Arrendadores)**
+- **a. Rutas para actualizar y eliminar inmuebles:**  
+  Se configuraron rutas en `urls.py` para las vistas `actualizar_inmueble` y `eliminar_inmueble`, accesibles solo para arrendadores autenticados.
+- **b. Formulario en base al modelo:**  
+  El formulario para actualizar inmuebles se generó en `forms.py`, utilizando nuevamente el modelo `Inmueble`. Este formulario precarga datos para su edición.
+- **c. Funciones para actualizar y eliminar inmuebles:**
+  - **Actualizar:**  
+    La función `actualizar_inmueble` en `views.py` permite a los arrendadores editar propiedades que les pertenecen, utilizando lógica para asegurar permisos.
+  - **Eliminar:**  
+    La función `eliminar_inmueble` solicita confirmación antes de eliminar el inmueble asociado al usuario autenticado.
+
+---
+
+## **3. Página web para que los arrendatarios vean inmuebles disponibles**
+- **a. Rutas para listar inmuebles:**  
+  Se definió la ruta `lista_inmuebles` en `urls.py`, accesible tanto para usuarios autenticados como no autenticados.
+- **b. Vista y controlador:**  
+  Se implementó la vista `lista_inmuebles` en `views.py`, la cual filtra los inmuebles disponibles:
+  - **Para arrendadores:**  
+    Muestra solo inmuebles creados por el usuario autenticado.
+  - **Para arrendatarios y visitantes no autenticados:**  
+    Muestra la oferta completa de inmuebles disponibles.
+- El archivo `lista_inmuebles.html` se diseñó para adaptarse dinámicamente, mostrando el navbar y el footer solo cuando el usuario no está autenticado.
+
+---
+
+## **Resultados**
+- Las funcionalidades cumplen con los requerimientos establecidos, brindando una interfaz básica y dinámica para arrendadores y arrendatarios.
+- Se aseguraron las restricciones de acceso mediante validaciones de autenticación y roles (`arrendador` y `arrendatario`).
+
 
 
 ### Print de los resultados
