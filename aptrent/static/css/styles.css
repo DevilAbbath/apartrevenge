@@ -1,0 +1,31 @@
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #212529; 
+    /* Sombra para destacar */
+}
+
+.navbar-brand img {
+    border-radius: 5px;
+    /* Borde redondeado en el logo */
+}
+
+.nav-item .nav-link {
+    color: white;
+    /* Color de texto */
+    font-weight: 500;
+}
+
+.nav-item .nav-link:hover {
+    color: #007bff;
+    /* Color al pasar el mouse */
+}
+
+.btn-outline-danger {
+    border: 1px solid #dc3545;
+    color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+}

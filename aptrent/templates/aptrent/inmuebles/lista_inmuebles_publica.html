@@ -11,9 +11,6 @@
             <th>Tipo</th>
             <th>Comuna</th>
             <th>Región</th>
-            {% if user.is_authenticated %}
-            <th>Acciones</th>
-            {% endif %}
         </tr>
         {% for inmueble in inmuebles %}
         <tr>

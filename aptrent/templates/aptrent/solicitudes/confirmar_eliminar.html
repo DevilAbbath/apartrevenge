@@ -1,0 +1,11 @@
+{% extends 'aptrent/layout/base.html' %}
+
+{% block content %}
+<h2>Confirmar eliminación</h2>
+<p>¿Estás seguro de que deseas Anular la solicitud de arriendo para el inmueble "{{ solicitud.inmueble.nombre }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Anular Solicitud</button>
+    <a href="{% url 'listar_solicitudes' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

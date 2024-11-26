@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import UserProfile, Inmueble
+from .models import UserProfile, Inmueble, SolicitudArriendo
 
 class CustomUserCreationForm(UserCreationForm):
     # Campos adicionales de UserProfile
@@ -40,4 +40,16 @@ class InmuebleForm(forms.ModelForm):
         widgets = {
             'descripcion': forms.Textarea(attrs={'rows': 4}),
             'tipo_inmueble': forms.Select(choices=Inmueble.TIPO_INMUEBLE_CHOICES),
+        }
+
+class SolicitudArriendoForm(forms.ModelForm):
+    class Meta:
+        model = SolicitudArriendo
+        fields = ['inmueble', 'fecha_solicitud']
+        widgets = {
+            'fecha_solicitud': forms.DateInput(attrs={'type': 'date'}),
+        }
+        labels = {
+            'inmueble': 'Seleccione el inmueble',
+            'fecha_solicitud': 'Fecha de la solicitud',
         }

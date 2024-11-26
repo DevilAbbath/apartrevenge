@@ -4,9 +4,10 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.exceptions import PermissionDenied
+from django.db.models import Exists, OuterRef
 from .decorators import check_user_type
-from .forms import CustomUserCreationForm, InmuebleForm
-from .models import UserProfile, Inmueble
+from .forms import CustomUserCreationForm, InmuebleForm, SolicitudArriendoForm
+from .models import UserProfile, Inmueble, SolicitudArriendo
 
 # Mantenedor de otras Paginas
 def index(request):
@@ -22,7 +23,22 @@ def arrendadores_view(request):
 @login_required
 @check_user_type('arrendatario')
 def arrendatarios_view(request):
-    return render(request, 'aptrent/arrendatarios.html')
+    # Excluir inmuebles con solicitudes pendientes
+    inmuebles_con_solicitudes = SolicitudArriendo.objects.filter(
+        inmueble=OuterRef('pk'),
+        estado_solicitud='pendiente'
+    )
+    
+    inmuebles = Inmueble.objects.filter(
+        comuna__isnull=False, 
+        region__isnull=False
+    ).annotate(
+        tiene_solicitud_pendiente=Exists(inmuebles_con_solicitudes)
+    ).filter(
+        tiene_solicitud_pendiente=False
+    )
+    
+    return render(request, 'aptrent/arrendatarios.html', {'inmuebles': inmuebles})
 
 def handler403(request, exception):
     messages.error(request, "No tienes permiso para acceder a esta página.")
@@ -139,7 +155,6 @@ def lista_inmuebles(request):
 
     return render(request, 'aptrent/inmuebles/lista_inmuebles_publica.html', {'inmuebles': inmuebles})
 
-
 @login_required
 def eliminar_inmueble(request, id):
     inmueble = get_object_or_404(Inmueble, id=id)
@@ -154,3 +169,45 @@ def eliminar_inmueble(request, id):
     
     return render(request, 'aptrent/inmuebles/eliminar_inmueble.html', {'inmueble': inmueble})
 
+
+
+# Mantenedor Solicitudes
+@login_required
+def crear_solicitud_arriendo(request, inmueble_id):
+    # Verificar que el usuario es arrendatario
+    user_profile = get_object_or_404(UserProfile, user=request.user)
+    if user_profile.user_type != 'arrendatario':
+        return redirect('index')
+
+    # Obtener el inmueble por ID
+    inmueble = get_object_or_404(Inmueble, id=inmueble_id)
+
+    if request.method == 'POST':
+        form = SolicitudArriendoForm(request.POST)
+        if form.is_valid():
+            solicitud = form.save(commit=False)
+            solicitud.user = request.user
+            solicitud.inmueble = inmueble
+            solicitud.save()
+            return redirect('arrendatarios')  # Redirigir a la lista después de guardar
+    else:
+        form = SolicitudArriendoForm(initial={'inmueble': inmueble})
+
+    return render(request, 'aptrent/solicitudes/crear_solicitud.html', {'form': form, 'inmueble': inmueble})
+
+@login_required
+def listar_solicitudes(request):
+    # Filtrar solicitudes realizadas por el usuario autenticado
+    solicitudes = SolicitudArriendo.objects.filter(user=request.user).select_related('inmueble')
+    return render(request, 'aptrent/solicitudes/listar_solicitudes.html', {'solicitudes': solicitudes})
+
+@login_required
+def eliminar_solicitud(request, solicitud_id):
+    solicitud = get_object_or_404(SolicitudArriendo, id_solicitud=solicitud_id, user=request.user)
+    
+    if request.method == 'POST':
+        solicitud.delete()
+        messages.success(request, 'La solicitud ha sido eliminada con éxito.')
+        return redirect('arrendatarios')  # Reemplaza con el nombre de tu vista de "Mis solicitudes"
+    
+    return render(request, 'aptrent/solicitudes/confirmar_eliminar.html', {'solicitud': solicitud})

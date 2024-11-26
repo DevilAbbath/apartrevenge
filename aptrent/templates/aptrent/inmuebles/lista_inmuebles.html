@@ -21,11 +21,14 @@
             <td>{{ inmueble.get_tipo_inmueble_display }}</td>
             <td>{{ inmueble.comuna }}</td>
             <td>{{ inmueble.region }}</td>
-            {% if user.is_authenticated %}
+            {% if user.is_authenticated and user.userprofile.user_type == 'arrendador' %}
             <td>
-                <!-- Agregar acciones solo para usuarios autenticados -->
                 <a href="{% url 'editar_inmueble' inmueble.id %}">Editar</a> | 
                 <a href="{% url 'eliminar_inmueble' inmueble.id %}">Eliminar</a>
+            </td>
+            {% elif user.is_authenticated and user.userprofile.user_type == 'arrendatario' %}
+            <td>
+                <a href="{% url 'crear_solicitud_arriendo' inmueble.id %}" class="btn btn-success">Solicitar arriendo</a>
             </td>
             {% endif %}
         </tr>
