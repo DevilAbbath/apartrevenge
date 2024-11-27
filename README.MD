@@ -52,59 +52,87 @@ Este proyecto corresponde al Hito 3 del desafío de la plataforma de arrendamien
     Visita http://127.0.0.1:8000/ para acceder e interectuar con los distintos operadores.
 
 
-# Resumen del Trabajo Realizado
+# Resumen del Proyecto de Gestión de Arrendamientos
 
-## **1. Página web para agregar nuevos inmuebles (Arrendadores)**
-- **a. Rutas para agregar inmuebles:**  
-  Se configuraron las rutas en `urls.py` para acceder a la vista `agregar_inmueble`, específica para que los arrendadores puedan añadir nuevas propiedades.
-- **b. Formulario basado en el modelo:**  
-  Se creó un formulario en `forms.py` utilizando el modelo `Inmueble`, limitando los campos al usuario autenticado (propietario).
-- **c. Función para guardar el objeto:**  
-  Se implementó la función `agregar_inmueble` en `views.py`, verificando que solo arrendadores puedan crear inmuebles. El formulario valida los datos y guarda el objeto en la base de datos.
+## 1. **Estructura General y Modelos**
+- Se ha creado una aplicación de **gestión de propiedades de arrendamiento** en Django, con funcionalidades para que los **arrendadores** puedan agregar, editar y eliminar inmuebles, mientras que los **arrendatarios** puedan ver propiedades y generar solicitudes de arriendo.
+- La base de datos fue configurada correctamente con **PostgreSQL**, con modelos como `Inmueble`, `SolicitudArriendo`, y `UserProfile` que incluyen información sobre propiedades, solicitudes y tipos de usuario.
 
----
+## 2. **Autenticación y Permisos**
+- Se implementó un sistema de **autenticación de usuarios** utilizando Django, permitiendo a los usuarios registrarse, iniciar sesión y cerrar sesión.
+- Se usaron permisos personalizados para restringir accesos a vistas y funcionalidades dependiendo del **tipo de usuario** (`arrendador` o `arrendatario`), utilizando decoradores como `@login_required` y `@permission_required`.
 
-## **2. Página web para actualizar y eliminar inmuebles existentes (Arrendadores)**
-- **a. Rutas para actualizar y eliminar inmuebles:**  
-  Se configuraron rutas en `urls.py` para las vistas `actualizar_inmueble` y `eliminar_inmueble`, accesibles solo para arrendadores autenticados.
-- **b. Formulario en base al modelo:**  
-  El formulario para actualizar inmuebles se generó en `forms.py`, utilizando nuevamente el modelo `Inmueble`. Este formulario precarga datos para su edición.
-- **c. Funciones para actualizar y eliminar inmuebles:**
-  - **Actualizar:**  
-    La función `actualizar_inmueble` en `views.py` permite a los arrendadores editar propiedades que les pertenecen, utilizando lógica para asegurar permisos.
-  - **Eliminar:**  
-    La función `eliminar_inmueble` solicita confirmación antes de eliminar el inmueble asociado al usuario autenticado.
+## 3. **Interfaz de Usuario**
+- Se utilizó **Bootstrap** para mejorar el diseño de las vistas, aplicando clases como `btn`, `table`, `card`, `container`, `w-90` para crear una experiencia más moderna y profesional.
+- Se implementaron formularios con el **paquete Crispy Forms**, lo que permitió una visualización de formularios más limpia y profesional con menos código.
 
----
+## 4. **CRUD de Inmuebles**
+- Los **arrendadores** pueden agregar, editar y eliminar inmuebles. Estas acciones están protegidas por permisos, garantizando que solo los arrendadores puedan gestionarlos.
+- Se configuraron los botones de eliminación para que usen **modales de confirmación** antes de realizar acciones destructivas, asegurando que los usuarios confirmen sus intenciones antes de eliminar registros importantes.
 
-## **3. Página web para que los arrendatarios vean inmuebles disponibles**
-- **a. Rutas para listar inmuebles:**  
-  Se definió la ruta `lista_inmuebles` en `urls.py`, accesible tanto para usuarios autenticados como no autenticados.
-- **b. Vista y controlador:**  
-  Se implementó la vista `lista_inmuebles` en `views.py`, la cual filtra los inmuebles disponibles:
-  - **Para arrendadores:**  
-    Muestra solo inmuebles creados por el usuario autenticado.
-  - **Para arrendatarios y visitantes no autenticados:**  
-    Muestra la oferta completa de inmuebles disponibles.
-- El archivo `lista_inmuebles.html` se diseñó para adaptarse dinámicamente, mostrando el navbar y el footer solo cuando el usuario no está autenticado.
+## 5. **Gestión de Solicitudes de Arriendo**
+- Los **arrendatarios** pueden ver un catálogo de inmuebles disponibles y generar **solicitudes de arriendo**. Se ha proporcionado una vista de la solicitud de arriendo con detalles como el nombre, dirección, tipo de inmueble, precio mensual y comuna.
+- Las solicitudes de arriendo también tienen un sistema de **gestión de estado**, donde el arrendatario puede ver si su solicitud está pendiente, aceptada o rechazada.
+- Los arrendatarios pueden **anular solicitudes** desde la interfaz, con una confirmación de eliminación a través de un modal de Bootstrap.
+
+## 6. **Despliegue y Configuración para Producción**
+- **Render** fue elegido como plataforma para el despliegue de tu aplicación. Se preparó tu proyecto para que fuera fácilmente **deployable** con configuraciones de producción:
+  - **Archivo `requirements.txt`** para manejar las dependencias del proyecto.
+  - **Archivo `Procfile`** para indicarle a Render cómo iniciar la aplicación con `gunicorn`.
+  - Configuración para **usar PostgreSQL** como base de datos en producción, utilizando variables de entorno para que la configuración no esté hardcodeada.
+  - **Archivos estáticos y de medios** fueron configurados para servir correctamente, y las migraciones de base de datos fueron ejecutadas.
+
+## 7. **Mejoras y Funcionalidades Extras**
+- Se mejoró el diseño visual de la página, agregando botones con estilos de Bootstrap y utilizando **modales** para confirmar acciones destructivas.
+- Para el manejo de solicitudes, se implementaron botones en el **catálogo de inmuebles** y en las **solicitudes de arriendo** con la funcionalidad de anulación, que ahora también tiene su propia confirmación visual.
+
+## 8. **Plan de Futuro**
+- Ahora que el sistema básico está funcional, el siguiente paso sería implementar más características como:
+  - **Notificaciones por correo electrónico** para alertar a los arrendadores cuando un arrendatario haga una solicitud.
+  - Mejorar la **interacción con los usuarios** con filtros en la vista del catálogo (por precio, tipo de inmueble, etc.).
+  - Crear un **panel de administración personalizado** para que los arrendadores gestionen mejor sus propiedades, solicitudes y detalles.
+
+## 9. **Resumen de Tecnologías y Herramientas Usadas**
+- **Django** como framework principal para el desarrollo web.
+- **PostgreSQL** como base de datos.
+- **Bootstrap** para mejorar la apariencia y funcionalidad de la interfaz.
+- **Crispy Forms** para un mejor manejo de formularios en la web.
+- **Render** para el despliegue de la aplicación en producción.
+- **GitHub** para controlar el código y facilitar el despliegue.
+
+Este proyecto ahora está listo para ser probado y lanzado en un entorno de producción con un diseño moderno, funcionalidades clave implementadas, y configurado para escalar en el futuro si es necesario.
+
 
 ---
 
 ## **Resultados**
-- Las funcionalidades cumplen con los requerimientos establecidos, brindando una interfaz básica y dinámica para arrendadores y arrendatarios.
-- Se aseguraron las restricciones de acceso mediante validaciones de autenticación y roles (`arrendador` y `arrendatario`).
+Este proyecto ahora está listo para ser probado y lanzado en un entorno de producción con un diseño moderno, funcionalidades clave implementadas, y configurado para escalar en el futuro si es necesario.
 
 
 
 ### Print de los resultados
 
-![img1](print/Hito4/img1.png)
+![img1](print/Final/img1.png)
 
-![img2](print/Hito4/img2.png)
+![img2](print/Final/img2.png)
 
-![img3](print/Hito4/img3.png)
+![img3](print/Final/img3.png)
 
-![img4](print/Hito4/img4.png)
+![img4](print/Final/img4.png)
+
+![img4](print/Final/img5.png)
+
+![img4](print/Final/img6.png)
+
+![img4](print/Final/img7.png)
+
+![img4](print/Final/img8.png)
+
+![img4](print/Final/img9.png)
+
+![img4](print/Final/img10.png)
+
+![img4](print/Final/img11.png)
 
 
 Autor

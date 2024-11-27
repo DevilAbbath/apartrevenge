@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Cerrar Sesión</title>
-</head>
-<body>
-    <h1>Has cerrado sesión</h1>
-    <p>Gracias por usar nuestra aplicación. <a href="{% url 'login' %}">Inicia sesión de nuevo</a></p>
-    <p>Volver al <a href="{% url 'index' %}">Home</a></p>
-</body>
-</html>
+{% block content %}
+<div class="container text-center">
+    <h2 class="text-center mb-4">Estas Seguro ?</h2>
+    <form class="my-5" method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-success ms-2" >
+            <i class="bi bi-check-circle">Si, Salir</i><!-- Ícono -->
+        </button>
+
+        <button type="button" class="btn btn-outline-danger ms-2" data-bs-dismiss="modal">
+            <i class="bi bi-check-circle">No, Vovler</i><!-- Ícono -->
+        </button>
+    </form>
+</div>
+{% endblock %}

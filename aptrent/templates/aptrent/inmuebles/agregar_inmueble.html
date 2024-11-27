@@ -1,18 +1,33 @@
 {% extends 'aptrent/layout/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    <h2>Agregar nuevo inmueble</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar</button>
-    </form>
+    <div class="container my-5">
+        <!-- Mensajes -->
+        {% if messages %}
+            <div class="alert alert-info">
+                <ul class="mb-0">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        
+        <!-- Título del Formulario -->
+        <h2 class="mb-4 text-center">Agregar nuevo inmueble</h2>
+        
+        <!-- Formulario -->
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            
+            <!-- Botón de Guardar -->
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a class="btn btn-secondary" href="{% url 'arrendadores' %}">Vovler</a>
+            </div>
+        </form>
+    </div>
 {% endblock %}

@@ -2,13 +2,29 @@
 {% load static %}
 
 {% block content %}
-    <h1>Home Portal</h1>
-    {% if user.is_authenticated %}
-        <h2>Logged, Buenas Tardes {{ user.first_name }}</h2>
-    {% else %}
-        <h3>Bienvenido a AptRent</h3>
-        <p>Registrate para obtener la experiencia completa al sitio. <a href="{% url 'registro' %}">Crear Cuenta</a></p>
-        <p>Ya tienes Cuenta? . <a href="{% url 'login' %}">Iniciar sesión</a></p>
-    {% endif %}
+    <!-- Header Section -->
+    <header class="header-bg d-flex justify-content-center align-items-center text-white p-5">
+    <div class="container d-flex justify-content-end">
+        <div class="bg-text-header w-40 text-start p-3">
+            {% if user.is_authenticated %}
+                <h2>Bienvenido, {{ user.first_name }}</h2>
+            {% else %}
+                <h2>Bienvenido a AptRent Revenge</h2>
+                <div class="mt-4">
+                    <p>Regístrate para obtener la experiencia completa al sitio.</p>
+                    <p>¿Ya tienes cuenta?</p>
+                    <div class="d-flex gap-3 mt-3 justify-content-end">
+                        <a href="" data-bs-toggle="modal" data-bs-target="#registroModal" class="btn btn-primary">Crear Cuenta</a>
+                        <a href="" data-bs-toggle="modal" data-bs-target="#loginModal" class="btn btn-secondary">Iniciar sesión</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</header>
+
+
+
+    {% include 'aptrent/inmuebles/lista_inmuebles_publica.html' %}    
 
 {% endblock %}

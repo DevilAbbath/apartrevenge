@@ -11,7 +11,44 @@ from .models import UserProfile, Inmueble, SolicitudArriendo
 
 # Mantenedor de otras Paginas
 def index(request):
-    return render(request, 'aptrent/index.html')
+    inmuebles = Inmueble.objects.filter(comuna__isnull=False, region__isnull=False)
+    
+    # Login
+    if request.method == 'POST':
+        formlog = AuthenticationForm(request, data=request.POST)
+        if formlog.is_valid():
+            user = formlog.get_user()
+            login(request, user)
+            # Redirigir según el tipo de usuario
+            user_profile = user.userprofile  # Accede al perfil del usuario
+            if user_profile.user_type == 'arrendatario':
+                return redirect('arrendatarios')  # Redirige a la vista de arrendatarios
+            elif user_profile.user_type == 'arrendador':
+                return redirect('arrendadores')  # Redirige a la vista de arrendadores
+            return redirect('index')  # Redirige al home si no tiene tipo
+    else:
+        formlog = AuthenticationForm()
+    
+    # Registrer
+    if request.method == 'POST':
+        formreg = CustomUserCreationForm(request.POST)
+        if formreg.is_valid():
+            formreg.save()
+            # Inicia sesión automáticamente después de registrarse
+            user = formreg.save()
+            login(request, user)
+            # Redirige a la página principal o cualquier otra página
+            return redirect('index')  # Cambia a la URL que desees
+    else:
+        formreg = CustomUserCreationForm()
+    
+    return render(request, 'aptrent/index.html', {
+            'inmuebles': inmuebles,
+            'formlog': formlog,
+            'formreg': formreg
+        }       
+    )
+
 
 @login_required
 @check_user_type('arrendador')
@@ -49,29 +86,28 @@ def handler403(request, exception):
 # Mantenedor Usuarios
 def registro(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
+        formreg = CustomUserCreationForm(request.POST)
+        if formreg.is_valid():
+            formreg.save()
             # Inicia sesión automáticamente después de registrarse
-            user = form.save()
+            user = formreg.save()
             login(request, user)
             # Redirige a la página principal o cualquier otra página
             return redirect('index')  # Cambia a la URL que desees
     else:
-        form = CustomUserCreationForm()
-    return render(request, 'aptrent/registro.html', {'form': form})
+        formreg = CustomUserCreationForm()
+    return render(request, 'aptrent/registro.html', {'form': formreg})
 
 def custom_logout(request):
     # Cerrar sesión
     logout(request)
-    # Redirigir a una página de confirmación
-    return render(request, 'registration/logout.html')
+    return redirect('index')
 
 def custom_login(request):
     if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
+        formlog = AuthenticationForm(request, data=request.POST)
+        if formlog.is_valid():
+            user = formlog.get_user()
             login(request, user)
             # Redirigir según el tipo de usuario
             user_profile = user.userprofile  # Accede al perfil del usuario
@@ -79,10 +115,11 @@ def custom_login(request):
                 return redirect('arrendatarios')  # Redirige a la vista de arrendatarios
             elif user_profile.user_type == 'arrendador':
                 return redirect('arrendadores')  # Redirige a la vista de arrendadores
-            return redirect('home')  # Redirige al home si no tiene tipo
+            return redirect('index')  # Redirige al home si no tiene tipo
     else:
-        form = AuthenticationForm()
-    return render(request, 'registration/login.html', {'form': form})
+        formlog = AuthenticationForm()
+    return render(request, 'registration/login.html', {'form': formlog})
+    
 
 @login_required
 def editar_perfil(request):

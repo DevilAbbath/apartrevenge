@@ -1,31 +1,229 @@
-.navbar {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #212529; 
-    /* Sombra para destacar */
+/* Estilo general */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
 }
 
-.navbar-brand img {
-    border-radius: 5px;
-    /* Borde redondeado en el logo */
+.body-content {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #212529; /* Fondo oscuro */
 }
 
 .nav-item .nav-link {
-    color: white;
-    /* Color de texto */
+    color: white; /* Color del texto */
     font-weight: 500;
 }
 
 .nav-item .nav-link:hover {
-    color: #007bff;
-    /* Color al pasar el mouse */
+    color: #007bff; /* Color al pasar el mouse */
 }
 
-.btn-outline-danger {
-    border: 1px solid #dc3545;
-    color: #dc3545;
+.navbar-brand img {
+    border-radius: 5px; /* Bordes redondeados para el logo */
 }
 
-.btn-outline-danger:hover {
-    background-color: #dc3545;
+/* Header con imagen de fondo */
+.header-bg {
+    background-image: url('../images/hdr.webp');
+    height: 400px; /* Ajusta la altura del header */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.header-bg h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.header-bg p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    color: #f8f9fa; /* Color blanco sutil */
+}
+
+.bg-text-header {
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 50%; /* Ocupa el 50% del ancho */
+    text-align: left;
+}
+
+/* Botones dentro del header */
+.header-bg .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.gap-3 {
+    gap: 15px; /* Espaciado entre botones */
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+/* Footer */
+.footer-bg {
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #212529; /* Fondo oscuro */
+}
+
+.footer {
+    margin-top: auto;
+    padding: 15px 0;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.footer a {
+    color: #f8f9fa;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #007bff; /* Color al pasar el mouse */
+}
+
+/* Utilidades */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.justify-content-center {
+    justify-content: center !important;
+}
+
+.justify-content-end {
+    justify-content: flex-end !important;
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+
+.text-white {
+    color: white !important;
+}
+
+.text-start {
+    text-align: left !important;
+}
+
+.mt-auto {
+    margin-top: auto !important;
+}
+
+
+/* Card Section */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 16px;
+}
+
+.card-content h3 {
+    margin: 0 0 10px;
+    font-size: 1.2em;
+}
+
+.card-content p {
+    margin: 0 0 15px;
+    font-size: 0.95em;
+    color: #666;
+}
+
+.card-content ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.card-content ul li {
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.card-actions {
+    margin-top: auto;
+    padding: 16px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+.card-actions .button {
+    background: #007bff;
     color: #fff;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background 0.3s;
+}
+
+.card-actions .button:hover {
+    background: #0056b3;
+}
+
+/* Modal */
+.modal-bg {
+    background-color: #666;
+    color: white;
 }

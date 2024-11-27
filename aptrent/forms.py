@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import TextInput, EmailInput, PasswordInput, Select
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import UserProfile, Inmueble, SolicitudArriendo
@@ -31,6 +32,7 @@ class CustomUserCreationForm(UserCreationForm):
         )
 
         return user
+    
 
 class InmuebleForm(forms.ModelForm):
     class Meta:

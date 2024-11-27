@@ -1,11 +1,13 @@
-{% extends 'aptrent/layout/base.html' %}
-{% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-    <h2>Iniciar Sesión</h2>
-    <form method="post">
+    <h2 class="text-center mb-4">Registro</h2>
+    <form method="post" class="w-80 mx-auto">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Entrar</button>
+        {{ formlog|crispy }}
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        </div>
     </form>
 {% endblock %}

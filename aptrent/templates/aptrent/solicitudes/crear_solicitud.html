@@ -1,13 +1,25 @@
 {% extends 'aptrent/layout/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-<h2>Generar solicitud de arriendo</h2>
-<p>Inmueble: {{ inmueble.nombre }}</p>
-<p>Dirección: {{ inmueble.direccion }}</p>
+    <div class="container my-5">
+    <h2>Generar solicitud de arriendo</h2>
+    <p>Inmueble: {{ inmueble.nombre }}</p>
+    <p>Dirección: {{ inmueble.direccion }}</p>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Enviar solicitud</button>
-</form>
+    <!-- Formulario con crispy -->
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Aplicamos crispy a los campos del formulario -->
+        <div class="mb-3">
+            {{ form|crispy }}
+        </div>
+        
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a class="btn btn-secondary" href="{% url 'arrendatarios' %}">Vovler</a>
+        </div>
+    </form>
+</div>
 {% endblock %}

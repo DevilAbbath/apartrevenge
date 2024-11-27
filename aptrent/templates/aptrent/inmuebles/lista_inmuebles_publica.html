@@ -1,30 +1,37 @@
-{% extends 'aptrent/layout/base.html' %}
 {% load static %}
 
 {% block content %}
-    <h2>Lista de inmuebles disponibles</h2>
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Precio Mensual</th>
-            <th>Tipo</th>
-            <th>Comuna</th>
-            <th>Región</th>
-        </tr>
-        {% for inmueble in inmuebles %}
-        <tr>
-            <td>{{ inmueble.nombre }}</td>
-            <td>{{ inmueble.descripcion }}</td>
-            <td>{{ inmueble.precio_mensual }}</td>
-            <td>{{ inmueble.get_tipo_inmueble_display }}</td>
-            <td>{{ inmueble.comuna }}</td>
-            <td>{{ inmueble.region }}</td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="6">No hay inmuebles disponibles.</td>
-        </tr>
-        {% endfor %}
-    </table>
+<div class="container w-90 my-5">
+<h2 class="display-3 text-center fw-bold my-3">Mira nuestro Catálogo Disponible</h2>
+
+<div class="card-container ">
+    {% for inmueble in inmuebles %}
+    <div class="card">
+        <div class="card-image">
+            {% if inmueble.tipo_inmueble == 'casa' %}
+                <img src="{% static 'images/casa.webp' %}" alt="Imagen de {{ inmueble.tipo_inmueble }}">
+            {% elif inmueble.tipo_inmueble == 'departamento' %}
+                <img src="{% static 'images/departamento.webp' %}" alt="Imagen de {{ inmueble.tipo_inmueble }}">
+            {% elif inmueble.tipo_inmueble == 'oficina' %}
+                <img src="{% static 'images/oficina.webp' %}" alt="Imagen de {{ inmueble.tipo_inmueble }}">
+            {% else %}
+                <img src="https://via.placeholder.com/300x200" alt="Sin Imagen">
+            {% endif %}
+        </div>
+        <div class="card-content">
+            <h3>{{ inmueble.nombre }}</h3>
+            <p>{{ inmueble.descripcion|truncatewords:20 }}</p>
+            <ul>
+                <li><strong>Precio Mensual:</strong> {{ inmueble.precio_mensual }} CLP</li>
+                <li><strong>Tipo:</strong> {{ inmueble.get_tipo_inmueble_display }}</li>
+                <li><strong>Comuna:</strong> {{ inmueble.comuna }}</li>
+                <li><strong>Región:</strong> {{ inmueble.region }}</li>
+            </ul>
+        </div>
+    </div>
+    {% empty %}
+    <p>No hay inmuebles disponibles.</p>
+    {% endfor %}
+</div>
+</div>
 {% endblock %}
