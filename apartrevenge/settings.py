@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-pg2rlvl9+e5s_2+fv!7f4y=x7f3^cer3_@b$4va4j)fjqztwk('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,7 +77,7 @@ WSGI_APPLICATION = 'apartrevenge.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
+""" DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'apartament-tenants',
@@ -85,6 +86,13 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
     }
+} """
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default='postgres://pathuser:tu_password@localhost:5432/apartament-tenants', 
+        conn_max_age=600
+    )
 }
 
 
